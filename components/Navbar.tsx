@@ -1,11 +1,35 @@
-import { Box } from "lucide-react";
 import React from "react";
+import { Box } from "lucide-react";
 import { Button } from "./ui/Button";
+import { useOutletContext } from "react-router";
+
+// Define your context type if not already defined elsewhere
+// You can remove this if you already have it declared globally
+type AuthContext = {
+  isSignedIn: boolean;
+  userName?: string;
+  signIn: () => Promise<any>;
+  signOut: () => Promise<any>;
+};
 
 const Navbar = () => {
-  const isSignedIn = false;
-  const username = "anuj";
-  const handleAuthClick = async () => {};
+  const { isSignedIn, userName, signIn, signOut } =
+    useOutletContext<AuthContext>();
+
+  const handleAuthClick = async () => {
+    try {
+      if (isSignedIn) {
+        await signOut(); // FIXED: must call the function
+        console.log("User signed out");
+      } else {
+        const result = await signIn();
+        console.log("User signed in:", result);
+      }
+    } catch (e) {
+      console.error("Authentication failed:", e);
+    }
+  };
+
   return (
     <header className="navbar">
       <nav className="inner">
@@ -14,6 +38,7 @@ const Navbar = () => {
             <Box className="logo" />
             <span className="name">Roomify</span>
           </div>
+
           <ul className="links">
             <a href="#">Product</a>
             <a href="#">Pricing</a>
@@ -21,11 +46,12 @@ const Navbar = () => {
             <a href="#">Enterprise</a>
           </ul>
         </div>
+
         <div className="actions">
           {isSignedIn ? (
             <>
               <span className="greeting">
-                {username ? `Hi, ${username}` : "Signed in"}
+                {userName ? `Hi, ${userName}` : "Signed in"}
               </span>
               <Button size="sm" onClick={handleAuthClick} className="btn">
                 Log Out
