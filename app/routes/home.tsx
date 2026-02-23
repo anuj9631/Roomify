@@ -12,7 +12,15 @@ export default function Home() {
   return (
     <div>
       <Navbar />
-      <h1 className="text-3xl text-indigo-700 font-extrabold">Home</h1>
+      <section className="hero">
+        <div className="announce">
+          <div className="dot">
+            <div className="pulse"></div>
+          </div>
+          <p>Introducing Roomify 2.0</p>
+        </div>
+        <h1>Build beautiful spaces at the speed of thought with Roomify</h1>
+      </section>
     </div>
   );
 }
