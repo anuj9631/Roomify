@@ -44,6 +44,10 @@ const Upload = () => {
             <h3>{file.name}</h3>
             <div className="progress">
               <div className="bar" style={{ width: `${progress}%` }} />
+
+              <p className="status-text">
+                {progress < 100 ? "Analyzing Floor Plan..." : "Redirecting..."}
+              </p>
             </div>
           </div>
         </div>
