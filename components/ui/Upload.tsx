@@ -1,3 +1,4 @@
+import { CheckCircle2, ImageIcon, UploadIcon } from "lucide-react";
 import React, { useState } from "react";
 import { useOutletContext } from "react-router";
 
@@ -8,16 +9,47 @@ const Upload = () => {
 
   const { isSignedIn } = useOutletContext<AuthContext>();
 
-  return(
-  <div className="upload">{
-    !file ? (
-      <div className={`dropzone ${isDragging ? 'isdragging' : ''}`}>
-        <input />
+  return (
+    <div className="upload">
+      {!file ? (
+        <div className={`dropzone ${isDragging ? "isdragging" : ""}`}>
+          <input
+            type="file"
+            className="drop-input"
+            accept=".jpg, .jpeg,.png"
+            disabled={!isSignedIn}
+          />
+          <div className="drop-content">
+            <div className="drop-icon">
+              <UploadIcon size={20} />
+            </div>
+            <p>
+              {isSignedIn
+                ? "Click to upload or just drag and drop"
+                : "Sign in or sign up with puter to uplaod"}
+            </p>
+            <p className="help">Maximum file size 50MB</p>
+          </div>
         </div>
-    ) :(
-      <div>FILE</div>
-    )
-  }</div>;
-)};
+      ) : (
+        <div className="upload-status">
+          <div className="status-content">
+            <div className="status-icon">
+              {progress === 100 ? (
+                <CheckCircle2 className="check" />
+              ) : (
+                <ImageIcon className="image" />
+              )}
+            </div>
+            <h3>{file.name}</h3>
+            <div className="progress">
+              <div className="bar" style={{ width: `${progress}%` }} />
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
 
 export default Upload;
