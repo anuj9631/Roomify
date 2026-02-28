@@ -12,6 +12,12 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Home() {
+  const handleUploadComplete = (base64Data: string) => {
+    console.log("Upload complete! Base64 data length:", base64Data.length);
+    // Handle the uploaded file data here
+    // For example, navigate to a new route with the image data
+  };
+
   return (
     <div className="home">
       <Navbar />
@@ -46,7 +52,7 @@ export default function Home() {
               <h3>Upload your floor plan</h3>
               <p>Supports JPG, PNG, formats upto 10MB</p>
             </div>
-            <Upload />
+            <Upload onComplete={handleUploadComplete} />
           </div>
         </div>
       </section>
