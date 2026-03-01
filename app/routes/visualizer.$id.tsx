@@ -1,7 +1,7 @@
 import React from "react";
 
 const visualizer = () => {
-  return <div>visualizer.$id</div>;
+  return <div>visualizer</div>;
 };
 
 export default visualizer;

@@ -3,6 +3,7 @@ import type { Route } from "./+types/home";
 import { ArrowRight, Clock, Layers } from "lucide-react";
 import { Button } from "components/ui/Button";
 import Upload from "components/ui/Upload";
+import { useNavigate } from "react-router";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -12,12 +13,15 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Home() {
-  const handleUploadComplete = (base64Data: string) => {
-    console.log("Upload complete! Base64 data length:", base64Data.length);
+  const handleUploadComplete = async (base64Image: string) => {
+    const newId = Date.now().toString();
+    navigate(`/visualizer/${newId}`);
+    return true;
+
     // Handle the uploaded file data here
     // For example, navigate to a new route with the image data
   };
-
+  const navigate = useNavigate();
   return (
     <div className="home">
       <Navbar />
