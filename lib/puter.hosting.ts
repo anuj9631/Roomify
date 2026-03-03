@@ -20,3 +20,7 @@ return {subdomain: created.subdomain};
     return null;
   }
 }
+
+export const uploadImageToHosting = async ( {hosting, url, projectId, label} : StoreHostedImageParams) :Promise<HostedAsset | null> =>{
+  
+}
