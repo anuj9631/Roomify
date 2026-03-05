@@ -4,6 +4,7 @@ import { ArrowRight, Clock, Layers } from "lucide-react";
 import { Button } from "components/ui/Button";
 import Upload from "components/ui/Upload";
 import { useNavigate } from "react-router";
+import { useState } from "react";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -13,6 +14,8 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Home() {
+  const [projects, setProjects] = useState<DesignItem[]>([]);
+
   const handleUploadComplete = async (base64Image: string) => {
     const newId = Date.now().toString();
     navigate(`/visualizer/${newId}`);
