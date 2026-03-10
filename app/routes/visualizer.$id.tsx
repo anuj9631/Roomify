@@ -25,7 +25,11 @@ const Visualizer = () => {
         setCurrentImage(result.renderedImage);
         /// update database
       }
-    } catch (error) {}
+    } catch (error) {
+      console.error("Generation failed", error);
+    } finally {
+      setIsProcessing(false);
+    }
   };
 
   return (
