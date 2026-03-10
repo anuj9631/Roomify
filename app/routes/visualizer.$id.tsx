@@ -1,5 +1,5 @@
 import { generate3DView } from "lib/ai.action";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
 
 const Visualizer = () => {
@@ -31,6 +31,16 @@ const Visualizer = () => {
       setIsProcessing(false);
     }
   };
+
+  useEffect(() => {
+    if (!initialImage || hasIntialGenerated.current) return;
+    if (intialRender) {
+      setCurrentImage(intialRender);
+      hasIntialGenerated.current = true;
+    }
+    hasIntialGenerated.current = true;
+    runGeneration();
+  }, [initialImage, intialRender]);
 
   return (
     <section>
