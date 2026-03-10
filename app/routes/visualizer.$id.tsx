@@ -1,9 +1,17 @@
-import React from "react";
-import { useLocation } from "react-router";
+import React, { useRef, useState } from "react";
+import { useLocation, useNavigate } from "react-router";
 
 const Visualizer = () => {
+  const navigate = useNavigate();
   const location = useLocation();
-  const { initialImage, name } = location.state || {};
+  const { initialImage, intialRender, name } = location.state || {};
+
+  const hasIntialGenerated = useRef(false);
+
+  const [isprocessing, setIsProcessing] = useState(false);
+  const [currentImage, setCurrentImage] = useState<string | null>(
+    intialRender || null,
+  );
 
   return (
     <section>
