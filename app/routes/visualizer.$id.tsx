@@ -1,3 +1,4 @@
+import { generate3DView } from "lib/ai.action";
 import React, { useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
 
@@ -12,6 +13,20 @@ const Visualizer = () => {
   const [currentImage, setCurrentImage] = useState<string | null>(
     intialRender || null,
   );
+  const handleBack = () => navigate("/");
+
+  const runGeneration = async () => {
+    if (!initialImage) return;
+    try {
+      setIsProcessing(true);
+      const result = await generate3DView({ sourceImage: initialImage });
+
+      if (result.renderedImage) {
+        setCurrentImage(result.renderedImage);
+        /// update database
+      }
+    } catch (error) {}
+  };
 
   return (
     <section>
