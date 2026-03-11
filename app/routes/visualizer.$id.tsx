@@ -1,4 +1,6 @@
+import { Button } from "components/ui/Button";
 import { generate3DView } from "lib/ai.action";
+import { Box, X } from "lucide-react";
 import React, { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
 
@@ -44,7 +46,16 @@ const Visualizer = () => {
 
   return (
     <div className="visualizer">
-      <nav className="topbar"></nav>
+      <nav className="topbar">
+        <div className="brand">
+          <Box className="logo" />
+          <span className="name">Roomify</span>
+        </div>
+        <Button variant="ghost" size="sm" onClick={handleBack} className="exit">
+          <X className="icon" />
+          Exit Editor
+        </Button>
+      </nav>
     </div>
   );
 };
