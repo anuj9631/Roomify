@@ -56,6 +56,10 @@ const Visualizer = () => {
           Exit Editor
         </Button>
       </nav>
+
+      <section className="content">
+        <div></div>
+      </section>
     </div>
   );
 };
