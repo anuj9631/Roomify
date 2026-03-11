@@ -45,12 +45,6 @@ const Visualizer = () => {
   return (
     <div className="visualizer">
       <nav className="topbar"></nav>
-      {initialImage && (
-        <div className="image-container">
-          <h2>Source Image</h2>
-          <img src={initialImage} alt="source" />
-        </div>
-      )}
     </div>
   );
 };
