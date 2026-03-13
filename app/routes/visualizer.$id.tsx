@@ -1,6 +1,6 @@
 import { Button } from "components/ui/Button";
 import { generate3DView } from "lib/ai.action";
-import { Box, Download, X } from "lucide-react";
+import { Box, Download, Share2, X } from "lucide-react";
 import React, { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
 
@@ -73,6 +73,10 @@ const Visualizer = () => {
                 disabled={!currentImage}
               >
                 <Download className="w-4 h-4 mr-4" /> Export
+              </Button>
+
+              <Button size="sm" onClick={() => {}} className="share">
+                <Share2 className="w-4 h-4 mr-4" /> Share
               </Button>
             </div>
           </div>
