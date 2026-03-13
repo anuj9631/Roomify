@@ -58,7 +58,14 @@ const Visualizer = () => {
       </nav>
 
       <section className="content">
-        <div></div>
+        <div className="panel">
+          <div className="panel-header">
+            <div className="panel-meta">
+              <p>Project</p>
+              <h2>{"Untitled Project"}</h2>
+            </div>
+          </div>
+        </div>
       </section>
     </div>
   );
