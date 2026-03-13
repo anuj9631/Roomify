@@ -1,6 +1,6 @@
 import { Button } from "components/ui/Button";
 import { generate3DView } from "lib/ai.action";
-import { Box, X } from "lucide-react";
+import { Box, Download, X } from "lucide-react";
 import React, { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
 
@@ -63,6 +63,17 @@ const Visualizer = () => {
             <div className="panel-meta">
               <p>Project</p>
               <h2>{"Untitled Project"}</h2>
+              <p className="note">Created by You</p>
+            </div>
+            <div className="panel-actions">
+              <Button
+                size="sm"
+                onClick={() => {}}
+                className="export"
+                disabled={!currentImage}
+              >
+                <Download className="w-4 h-4 mr-4" /> Export
+              </Button>
             </div>
           </div>
         </div>
