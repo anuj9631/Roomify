@@ -1,6 +1,6 @@
 import { Button } from "components/ui/Button";
 import { generate3DView } from "lib/ai.action";
-import { Box, Download, Share2, X } from "lucide-react";
+import { Box, Download, RefreshCcw, Share2, X } from "lucide-react";
 import React, { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
 
@@ -93,6 +93,16 @@ const Visualizer = () => {
                     className="render-fallback"
                   />
                 )}
+              </div>
+            )}
+
+            {isprocessing && (
+              <div className="render-overlay">
+                <div className="rendering-card">
+                  <RefreshCcw className="spinner" />
+                  <span className="title">Rendering...</span>
+                  <span className="title">Rendering...</span>
+                </div>
               </div>
             )}
           </div>
