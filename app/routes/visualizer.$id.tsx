@@ -85,7 +85,15 @@ const Visualizer = () => {
             {currentImage ? (
               <img src={currentImage} alt="AI Render" className="render-img" />
             ) : (
-              <div className="render-placeholder"></div>
+              <div className="render-placeholder">
+                {initialImage && (
+                  <img
+                    src={initialImage}
+                    alt="original"
+                    className="render-fallback"
+                  />
+                )}
+              </div>
             )}
           </div>
         </div>
