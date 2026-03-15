@@ -101,7 +101,7 @@ const Visualizer = () => {
                 <div className="rendering-card">
                   <RefreshCcw className="spinner" />
                   <span className="title">Rendering...</span>
-                  <span className="title">Rendering...</span>
+                  <span className="title">Generating your 3D...</span>
                 </div>
               </div>
             )}
