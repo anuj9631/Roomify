@@ -80,6 +80,14 @@ const Visualizer = () => {
               </Button>
             </div>
           </div>
+
+          <div className={`render-area ${isprocessing ? "is-processing" : ""}`}>
+            {currentImage ? (
+              <img src={currentImage} alt="AI Render" className="render-img" />
+            ) : (
+              <div className="render-placeholder"></div>
+            )}
+          </div>
         </div>
       </section>
     </div>
