@@ -102,6 +102,7 @@ const Visualizer = () => {
                   <RefreshCcw className="spinner" />
                   <span className="title">Rendering...</span>
                   <span className="title">Generating your 3D...</span>
+                  //final commit 3d generation completed
                 </div>
               </div>
             )}
