@@ -75,3 +75,9 @@ export const createproject = async ({
     return null;
   }
 };
+
+
+export const getProjects = async () => {
+   
+  
+}
