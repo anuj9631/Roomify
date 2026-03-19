@@ -4,6 +4,7 @@ import {
   uploadImageToHosting,
 } from "./puter.hosting";
 import { isHostedUrl } from "./utils";
+import { PUTER_WORKER_URL } from "./constants";
 export const signIn = async () => await puter.auth.signIn();
 
 export const signOut = async () => puter.auth.signOut();
@@ -78,6 +79,10 @@ export const createproject = async ({
 
 
 export const getProjects = async () => {
-   
+   if(!PUTER_WORKER_URL) {
+        console.warn('Missing VITE_PUTER_WORKER_URL; skip history fetch;');
+        return []
+    }
+
   
 }
