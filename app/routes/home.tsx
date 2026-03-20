@@ -4,7 +4,7 @@ import { ArrowRight, ArrowUpRight, Clock, Layers } from "lucide-react";
 import { Button } from "components/ui/Button";
 import Upload from "components/ui/Upload";
 import { useNavigate } from "react-router";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { createproject } from "lib/puter.action";
 
 export function meta({}: Route.MetaArgs) {
@@ -16,6 +16,7 @@ export function meta({}: Route.MetaArgs) {
 
 export default function Home() {
   const [projects, setProjects] = useState<DesignItem[]>([]);
+  const isCreatingProjectRef = useRef(false);
 
   const handleUploadComplete = async (base64Image: string) => {
     const newId = Date.now().toString();
