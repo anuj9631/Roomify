@@ -19,34 +19,43 @@ export default function Home() {
   const isCreatingProjectRef = useRef(false);
 
   const handleUploadComplete = async (base64Image: string) => {
-    const newId = Date.now().toString();
-    const name = `Residence ${newId}`;
+    try {
+      if (isCreatingProjectRef.current) return false;
+      isCreatingProjectRef.current = true;
+      const newId = Date.now().toString();
+      const name = `Residence ${newId}`;
 
-    const newItem = {
-      id: newId,
-      name,
-      sourceImage: base64Image,
-      renderedImage: undefined,
-      timestamp: Date.now(),
-    };
-
-    const saved = await createproject({ item: newItem, visibility: "private" });
-
-    if (!saved) {
-      console.error("Failed to create project");
-      return false;
-    }
-
-    setProjects((prev) => [newItem, ...prev]);
-
-    navigate(`/visualizer/${newId}`, {
-      state: {
-        initialImage: saved.sourceImage,
-        initialRendered: saved.renderedImage || null,
+      const newItem = {
+        id: newId,
         name,
-      },
-    });
-    return true;
+        sourceImage: base64Image,
+        renderedImage: undefined,
+        timestamp: Date.now(),
+      };
+
+      const saved = await createproject({
+        item: newItem,
+        visibility: "private",
+      });
+
+      if (!saved) {
+        console.error("Failed to create project");
+        return false;
+      }
+
+      setProjects((prev) => [newItem, ...prev]);
+
+      navigate(`/visualizer/${newId}`, {
+        state: {
+          initialImage: saved.sourceImage,
+          initialRendered: saved.renderedImage || null,
+          name,
+        },
+      });
+      return true;
+    } finally {
+      isCreatingProjectRef.current = false;
+    }
 
     // Handle the uploaded file data here
     // For example, navigate to a new route with the image data
