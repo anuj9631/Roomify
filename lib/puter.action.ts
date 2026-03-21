@@ -20,6 +20,11 @@ export const getCurrentUser = async () => {
 export const createproject = async ({
   item,
 }: CreateProjectParams): Promise<DesignItem | null | undefined> => {
+
+   if(!PUTER_WORKER_URL) {
+        console.warn('Missing VITE_PUTER_WORKER_URL; skip history fetch;');
+        return null;
+    }
   const projectId = item.id;
 
   const hosting = await getOrCreateHostingConfig();
