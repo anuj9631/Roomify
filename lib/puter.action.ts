@@ -18,7 +18,7 @@ export const getCurrentUser = async () => {
 };
 
 export const createproject = async ({
-  item, 
+  item, visibility='private'
   
 }: CreateProjectParams): Promise<DesignItem | null | undefined> => {
 
