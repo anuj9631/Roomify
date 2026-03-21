@@ -18,7 +18,8 @@ export const getCurrentUser = async () => {
 };
 
 export const createproject = async ({
-  item,
+  item, 
+  
 }: CreateProjectParams): Promise<DesignItem | null | undefined> => {
 
    if(!PUTER_WORKER_URL) {
@@ -75,6 +76,8 @@ export const createproject = async ({
   };
 
   try {
+   const response = await puter.workers.exec(`${PUTER_WORKER_URL}/api/projects/save`, { method: 'POST', headers :{'Content-Type': 'application/json', body: JSON.stringify({project: payload, visibility})}});
+
     return payload;
   } catch (e) {
     console.log("Failed to save project", e);
