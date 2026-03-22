@@ -85,8 +85,8 @@ export const createproject = async ({
 
                 const data = (await response.json()) as { project?: DesignItem | null }
 
+        return data?.project ?? null;
 
-    return payload;
   } catch (e) {
     console.log("Failed to save project", e);
     return null;
