@@ -78,6 +78,11 @@ export const createproject = async ({
   try {
    const response = await puter.workers.exec(`${PUTER_WORKER_URL}/api/projects/save`, { method: 'POST', headers :{'Content-Type': 'application/json', body: JSON.stringify({project: payload, visibility})}});
 
+   if(!response.ok) {
+            console.error('failed to save the project', await response.text());
+            return null;
+        }
+
     return payload;
   } catch (e) {
     console.log("Failed to save project", e);
