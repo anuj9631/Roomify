@@ -20,6 +20,9 @@ const Visualizer = () => {
 
   const hasIntialGenerated = useRef(false);
 
+  const [project, setProject] = useState<DesignItem | null>(null);
+
+  const [isProjectLoading, setIsProjectLoading] = useState(true);
   const [isprocessing, setIsProcessing] = useState(false);
   const [currentImage, setCurrentImage] = useState<string | null>(
     intialRender || null,
