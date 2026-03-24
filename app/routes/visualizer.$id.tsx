@@ -2,21 +2,14 @@ import { Button } from "components/ui/Button";
 import { generate3DView } from "lib/ai.action";
 import { Box, Download, RefreshCcw, Share2, X } from "lucide-react";
 import React, { useEffect, useRef, useState } from "react";
-import {
-  useLocation,
-  useNavigate,
-  useOutletContext,
-  useParams,
-} from "react-router";
+import { useNavigate, useOutletContext, useParams } from "react-router";
 
 const Visualizer = () => {
   const { id } = useParams();
 
   const navigate = useNavigate();
-  const location = useLocation();
-  const { userId } = useOutletContext<AuthContext>();
 
-  const { initialImage, intialRender, name } = location.state || {};
+  const { userId } = useOutletContext<AuthContext>();
 
   const hasIntialGenerated = useRef(false);
 
@@ -24,16 +17,14 @@ const Visualizer = () => {
 
   const [isProjectLoading, setIsProjectLoading] = useState(true);
   const [isprocessing, setIsProcessing] = useState(false);
-  const [currentImage, setCurrentImage] = useState<string | null>(
-    intialRender || null,
-  );
+  const [currentImage, setCurrentImage] = useState<string | null>(null);
   const handleBack = () => navigate("/");
 
-  const runGeneration = async () => {
-    if (!initialImage) return;
+  const runGeneration = async (item: DesignItem) => {
+    if (!id || !item.sourceImage) return;
     try {
       setIsProcessing(true);
-      const result = await generate3DView({ sourceImage: initialImage });
+      const result = await generate3DView({ sourceImage: item.sourceImage });
 
       if (result.renderedImage) {
         setCurrentImage(result.renderedImage);
