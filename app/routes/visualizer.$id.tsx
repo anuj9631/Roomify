@@ -2,11 +2,20 @@ import { Button } from "components/ui/Button";
 import { generate3DView } from "lib/ai.action";
 import { Box, Download, RefreshCcw, Share2, X } from "lucide-react";
 import React, { useEffect, useRef, useState } from "react";
-import { useLocation, useNavigate } from "react-router";
+import {
+  useLocation,
+  useNavigate,
+  useOutletContext,
+  useParams,
+} from "react-router";
 
 const Visualizer = () => {
+  const { id } = useParams();
+
   const navigate = useNavigate();
   const location = useLocation();
+  const { userId } = useOutletContext<AuthContext>();
+
   const { initialImage, intialRender, name } = location.state || {};
 
   const hasIntialGenerated = useRef(false);
