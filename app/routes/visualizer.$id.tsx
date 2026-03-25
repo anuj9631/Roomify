@@ -29,6 +29,15 @@ const Visualizer = () => {
       if (result.renderedImage) {
         setCurrentImage(result.renderedImage);
         /// update database
+
+        const updatedItem = {
+          ...item,
+          renderedImage: result.renderedImage,
+          renderedPath: result.renderedPath,
+          timestamp: Date.now(),
+          ownerId: item.ownerId ?? userId ?? null,
+          isPublic: item.isPublic ?? false,
+        };
       }
     } catch (error) {
       console.error("Generation failed", error);
