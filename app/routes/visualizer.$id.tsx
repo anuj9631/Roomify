@@ -56,16 +56,6 @@ const Visualizer = () => {
     }
   };
 
-  useEffect(() => {
-    if (!initialImage || hasIntialGenerated.current) return;
-    if (intialRender) {
-      setCurrentImage(intialRender);
-      hasIntialGenerated.current = true;
-    }
-    hasIntialGenerated.current = true;
-    runGeneration();
-  }, [initialImage, intialRender]);
-
   return (
     <div className="visualizer">
       <nav className="topbar">
