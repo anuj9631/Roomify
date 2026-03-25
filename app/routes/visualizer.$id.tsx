@@ -1,5 +1,6 @@
 import { Button } from "components/ui/Button";
 import { generate3DView } from "lib/ai.action";
+import { createproject } from "lib/puter.action";
 import { Box, Download, RefreshCcw, Share2, X } from "lucide-react";
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate, useOutletContext, useParams } from "react-router";
@@ -38,6 +39,15 @@ const Visualizer = () => {
           ownerId: item.ownerId ?? userId ?? null,
           isPublic: item.isPublic ?? false,
         };
+        const saved = await createproject({
+          item: updatedItem,
+          visibility: "private",
+        });
+
+        if (saved) {
+          setProject(saved);
+          setCurrentImage(saved.renderedImage || result.renderedImage);
+        }
       }
     } catch (error) {
       console.error("Generation failed", error);
