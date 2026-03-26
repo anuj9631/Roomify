@@ -4,9 +4,8 @@ import { ArrowRight, ArrowUpRight, Clock, Layers } from "lucide-react";
 import { Button } from "components/ui/Button";
 import Upload from "components/ui/Upload";
 import { useNavigate } from "react-router";
-import { useRef, useState } from "react";
-import { createproject } from "lib/puter.action";
-
+import { useEffect, useRef, useState } from "react";
+import { createProject, getProjects } from "lib/puter.action";
 export function meta({}: Route.MetaArgs) {
   return [
     { title: "New React Router App" },
@@ -33,7 +32,7 @@ export default function Home() {
         timestamp: Date.now(),
       };
 
-      const saved = await createproject({
+      const saved = await createProject({
         item: newItem,
         visibility: "private",
       });
@@ -61,6 +60,16 @@ export default function Home() {
     // For example, navigate to a new route with the image data
   };
   const navigate = useNavigate();
+  useEffect(() => {
+    const fetchProjects = async () => {
+      const items = await getProjects();
+
+      setProjects(items);
+    };
+
+    fetchProjects();
+  }, []);
+
   return (
     <div className="home">
       <Navbar />
