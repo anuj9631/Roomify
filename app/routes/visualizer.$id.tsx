@@ -56,6 +56,52 @@ const Visualizer = () => {
     }
   };
 
+  useEffect(() => {
+    let isMounted = true;
+
+    const loadProject = async () => {
+      if (!id) {
+        setIsProjectLoading(false);
+        return;
+      }
+
+      setIsProjectLoading(true);
+
+      const fetchedProject = await getProjectById({ id });
+
+      if (!isMounted) return;
+
+      setProject(fetchedProject);
+      setCurrentImage(fetchedProject?.renderedImage || null);
+      setIsProjectLoading(false);
+      hasInitialGenerated.current = false;
+    };
+
+    loadProject();
+
+    return () => {
+      isMounted = false;
+    };
+  }, [id]);
+
+  useEffect(() => {
+    if (
+      isProjectLoading ||
+      hasInitialGenerated.current ||
+      !project?.sourceImage
+    )
+      return;
+
+    if (project.renderedImage) {
+      setCurrentImage(project.renderedImage);
+      hasInitialGenerated.current = true;
+      return;
+    }
+
+    hasInitialGenerated.current = true;
+    void runGeneration(project);
+  }, [project, isProjectLoading]);
+
   return (
     <div className="visualizer">
       <nav className="topbar">
