@@ -36,31 +36,6 @@ AI Models	Claude, Gemini
 Backend	Puter.js (serverless environment)
 Storage	KV Storage
 Hosting	Serverless / Edge Deployment
-📂 Project Structure
-├── src/
-│   ├── components/      # UI components
-│   ├── pages/           # App pages
-│   ├── services/        # AI + API logic
-│   ├── hooks/           # Custom hooks
-│   └── utils/           # Helper functions
-│
-├── public/              # Static assets
-├── workers/             # Serverless workers
-├── kv/                  # Storage logic
-└── README.md
-⚙️ Installation
-# Clone the repository
-git clone https://github.com/your-username/ai-arch-visualizer.git
-
-# Navigate to project
-cd ai-arch-visualizer
-
-# Install dependencies
-npm install
-
-# Run development server
-npm run dev
-🔑 Environment Setup
 
 Create a .env file in the root:
 
