@@ -1,87 +1,113 @@
-# Welcome to React Router!
+🏗️ AI Architectural Visualization SaaS
 
-A modern, production-ready template for building full-stack React applications using React Router.
+Transform 2D floor plans into stunning photorealistic 3D renders using cutting-edge AI models — all in a modern, scalable, serverless architecture.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+🚀 Overview
 
-## Features
+This project is a full-stack AI-powered SaaS platform that allows users to upload 2D architectural floor plans and instantly generate realistic 3D visualizations.
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+Built with React + TypeScript + Puter.js, it leverages powerful AI models (Claude, Gemini, and more) to deliver high-quality renders with persistent storage and global accessibility.
 
-## Getting Started
+✨ Features
+🧠 AI-Powered Rendering
+Convert 2D floor plans into photorealistic 3D visuals
+Supports multiple AI providers (Claude, Gemini, etc.)
+High-quality image generation with customizable prompts
+⚡ Serverless Architecture
+Built using serverless workers
+Scalable and cost-efficient
+No backend server management required
+💾 Persistent Storage
+High-performance KV (Key-Value) storage
+Permanent hosting of generated renders
+Metadata persistence (user, prompts, timestamps)
+🌍 Global Community Feed
+Explore designs from other users
+Share your creations with the world
+Discover inspiration from architectural projects
+🧩 Modern Frontend
+Built with React + TypeScript
+Clean UI with responsive design
+Smooth UX for uploads, rendering, and browsing
+🛠️ Tech Stack
+Layer	Technology
+Frontend	React, TypeScript
+AI Models	Claude, Gemini
+Backend	Puter.js (serverless environment)
+Storage	KV Storage
+Hosting	Serverless / Edge Deployment
+📂 Project Structure
+├── src/
+│   ├── components/      # UI components
+│   ├── pages/           # App pages
+│   ├── services/        # AI + API logic
+│   ├── hooks/           # Custom hooks
+│   └── utils/           # Helper functions
+│
+├── public/              # Static assets
+├── workers/             # Serverless workers
+├── kv/                  # Storage logic
+└── README.md
+⚙️ Installation
+# Clone the repository
+git clone https://github.com/your-username/ai-arch-visualizer.git
 
-### Installation
+# Navigate to project
+cd ai-arch-visualizer
 
-Install the dependencies:
-
-```bash
+# Install dependencies
 npm install
-```
 
-### Development
-
-Start the development server with HMR:
-
-```bash
+# Run development server
 npm run dev
-```
+🔑 Environment Setup
 
-Your application will be available at `http://localhost:5173`.
+Create a .env file in the root:
 
-## Building for Production
+VITE_AI_API_KEY=your_api_key_here
+VITE_STORAGE_ENDPOINT=your_storage_url
+🧪 Usage
+Upload a 2D floor plan
+Add optional AI prompt/customization
+Click Generate
+View and download your 3D render
+Share it on the community feed
+📸 Demo Flow
+Upload → Process → AI Render → Store → Share
+🌟 Future Enhancements
+🎨 Style presets (modern, minimalist, luxury)
+🏠 Interior + exterior rendering modes
+🧱 Multi-floor plan support
+🧑‍🤝‍🧑 Collaboration features
+📱 Mobile app version
+🤝 Contributing
 
-Create a production build:
+Contributions are welcome!
 
-```bash
-npm run build
-```
+# Fork the repo
+# Create your feature branch
+git checkout -b feature/amazing-feature
 
-## Deployment
+# Commit changes
+git commit -m "Add amazing feature"
 
-### Docker Deployment
+# Push to branch
+git push origin feature/amazing-feature
 
-To build and run using Docker:
+# Open a Pull Request
+📄 License
 
-```bash
-docker build -t my-app .
+This project is licensed under the MIT License.
 
-# Run the container
-docker run -p 3000:3000 my-app
-```
+💡 Inspiration
 
-The containerized application can be deployed to any platform that supports Docker, including:
+This project demonstrates how AI + modern web technologies can revolutionize architecture, real estate, and design workflows.
 
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
+👨‍💻 Author
 
-### DIY Deployment
+Anuj Kumar
+Software Developer | AI Enthusiast
 
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
+⭐ Support
 
-Make sure to deploy the output of `npm run build`
-
-```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
-```
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
-
----
-
-Built with ❤️ using React Router.
+If you like this project, give it a ⭐ on GitHub and share it!
